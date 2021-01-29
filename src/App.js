@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import FPSStats from "react-fps-stats";
+
+import MainContainer from "./components/mainContainer";
+
+import {DebugMsgProvider} from "./contexts/debugMsgCtx";
+import {DataProvider} from "./contexts/dataCtx";
+
+import DebugMsg from "./components/debugMsg";
+
+// import testCode from "./testing/testingTfjs";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <div onClick={testCode}>Test Tensorflow Code</div> */}
+      <DebugMsgProvider>
+        <DataProvider>
+          <MainContainer/>
+        </DataProvider>
+          
+        <DebugMsg/>
+      </DebugMsgProvider>
+      <FPSStats left="auto" top="auto" right={0} bottom={0}/>
+    </>
   );
 }
 
